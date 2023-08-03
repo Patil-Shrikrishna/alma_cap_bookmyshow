@@ -1,50 +1,33 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-module.exports = {
-    entry: './src/index.js',
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-    output: {
-        path: path.join(__dirname, "dist"),
-        filename: "index_bundle.js",
-    },
-    devServer: {
-        proxy: {
-            '/api/**': {
-                target: 'http://localhost:8080/',
-                secure: false,
-                changeOrigin: true
-            }
-        },
-    },
+module.exports = {
+    entry: path.join(__dirname, "src", "index.js"),
+    output: { path: path.join(__dirname, "build"), filename: "index.bundle.js" },
+    mode: process.env.NODE_ENV || "development",
+    resolve: { modules: [path.resolve(__dirname, "src"), "node_modules"] },
+    devServer: { static: path.join(__dirname, "src"), },
 
     module: {
         rules: [
-            {
-                test: /\.js$|\.jsx$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+            { 
+                test: /\.(js|jsx)$/, 
+                exclude: /node_modules/, 
+                use: ["babel-loader"] 
             },
             {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                ]
+                test: /\.(css|scss)$/,
+                use: ["style-loader", "css-loader"],
+            },
+            { 
+                test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+                use: ["file-loader"] 
             },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html"
-        })
+            template: path.join(__dirname, "src", "index.html"),
+        }),
     ],
-    resolve: {
-        extensions: ['.js', '.jsx'],
-    }
 };
