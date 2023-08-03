@@ -1,25 +1,34 @@
+// Import required modules for the application.
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
-const port = 8080;
-const path = require('path')
+const cors = require("cors");
+const router = require("./routes/routes");
+const connectToMongo = require("./config/connector");
+
+// Create an instance of the Express application.
+const app = express();
+
+// Connect to MongoDB using the 'connectToMongo' function.
+connectToMongo();
+
+// Middleware for parsing JSON data in the request body.
+app.use(express.json());
+
+// Enable Cross-Origin Resource Sharing (CORS) to allow requests from different origins.
+app.use(cors());
+
+// Middleware for parsing URL-encoded data (extended: false means the parser uses the classic encoding)
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-const { connection } = require("./connector");
-const cors = require('cors')
-app.use(cors())
 
+// Set up the routes using the imported router.
+// All routes defined in the 'router' will be accessible under the '/api' path.
+app.use("/api", router);
 
+// Define the port for the server to listen on.
+const port = 8080;
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
-
-module.exports = app;   
-
-
-// 1. Boilerplate code - do we need to use only this code or can we make entirely our own code.
-// 2. Can we make movie data database and it's required endpoints?
-
-
-// Task:- 
-// Akhilesh, Shashank, Sneta will work on frontend
-// Everyone will work on backend. :)
+// Start the server and make it listen on the specified port.
+// A message will be printed to the console once the server is up and running.
+app.listen(port, () => {
+  console.log(`App listening on port http://localhost:${port}`);
+});
