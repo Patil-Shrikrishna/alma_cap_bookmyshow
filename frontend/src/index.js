@@ -1,6 +1,11 @@
 const React = require ('react');
 const ReactDOM = require ('react-dom');
 const App = require ("../App");
+const  {createRoot}  = require("react-dom/client") ;
 
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+root.render(
+    <App />
+);
