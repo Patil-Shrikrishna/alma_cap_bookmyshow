@@ -37,7 +37,7 @@ Book My Show (Almabetter Back-end Project) is a web application that allows user
 Book My Show (Almabetter Back-end Project)
 
 
-![flashcard-generator](https://github.com/lokeshkavisth/Flashcard-Generator-Almabetter/assets/104786100/51561cf8-1d81-41eb-8c71-c6fc37e2391e)
+![flashcard-generator]()
 
 
 
