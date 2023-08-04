@@ -11,6 +11,7 @@ const bookMovieSchema = new mongoose.Schema({
     D1: { type: Number },
     D2: { type: Number },
   },
+  bookedAt:  { type: Date, default: Date.now, index: true }
 });
 
 const bookingModel = mongoose.model("bookmovietickets", bookMovieSchema);
