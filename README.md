@@ -37,7 +37,7 @@ Book My Show (Almabetter Back-end Project) is a web application that allows user
 Book My Show (Almabetter Back-end Project)
 
 
-![flashcard-generator]()
+![Book My Show]()
 
 
 
@@ -66,7 +66,7 @@ This project follows the [all-contributors](https://github.com/Patil-Shrikrishna
 1. Shrikrishna Patil
 [GitHub](https://github.com/Patil-Shrikrishna) |
 [LinkedIn](https://www.linkedin.com/in/shrikrishna-patil-1b9101239/) |
-[YouTube]()
+[YouTube](https://www.youtube.com/channel/UCM2cCYy4__w5GY4HWJbcq8A)
 
 2. Sneta Gupta
 [GitHub](https://github.com/snetagupta) |
@@ -76,6 +76,11 @@ This project follows the [all-contributors](https://github.com/Patil-Shrikrishna
 3. Akhilesh Maurya
 [GitHub](https://github.com/akhilesh365) |
 [LinkedIn](https://www.linkedin.com/in/akhilesh-maurya-985078161/) |
+[YouTube]()
+
+4. Shashank Shelke
+[GitHub](https://github.com/ShashankShelke11) |
+[LinkedIn](https://linkedin.com/in/shashank-shelke-2b8400248) |
 [YouTube]()
 
 ## Build Process
