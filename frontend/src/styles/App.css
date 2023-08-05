@@ -1,9 +1,14 @@
+body{
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
 .movie-column, .seat-column, .slot-column {
     display: inline-block;
     margin: 5px;
     color: rgb(0, 0, 0);
     border: 1px rgb(0, 0, 0) ridge;
-    padding: 10px 15px;
+    padding: 20px 15px;
     line-height: 1px;
     border-radius: 5px;
     /* box-shadow: 0 0 5px 5px; */
@@ -38,6 +43,12 @@
     font-weight: 500;
 }
 
+ul{
+    padding:0;
+    list-style: none;
+
+}
+
 .movie-column-selected, .seat-column-selected, .slot-column-selected {
     background: rgb(211, 115, 115);
     /* box-shadow: 0 0 5px 5px; */
@@ -47,6 +58,22 @@ input {
     width: 50px;
     border-color: rgb(196, 196, 196);
     border-width: 1px;
+}
+
+.booking-container{
+    display: flex;
+    align-items: start;
+    gap:10px;
+}
+
+.ticket-container{
+color: rgb(0, 0, 0);
+    border: 1px rgb(0, 0, 0) ridge;
+    padding: 10px;
+    border-radius: 5px;
+
+
+
 }
 
 .last-order {
