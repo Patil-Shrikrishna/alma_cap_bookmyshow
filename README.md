@@ -78,11 +78,6 @@ This project follows the [all-contributors](https://github.com/Patil-Shrikrishna
 [LinkedIn](https://www.linkedin.com/in/akhilesh-maurya-985078161/) |
 [YouTube]()
 
-4. Shashank Shelke
-[GitHub](https://github.com/ShashankShelke11) |
-[LinkedIn](https://linkedin.com/in/shashank-shelke-2b8400248) |
-[YouTube]()
-
 ## Build Process
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
