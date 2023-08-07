@@ -16,7 +16,7 @@ const getLastBooking = async (req, res) =>{
       .catch((err) => {
         // For internal server error send 500 status code and error message
         res.status(500).json({
-            message: "Internal server error.",
+            message: "An unexpected error occurred. Please try again later.",
           });
       });
 

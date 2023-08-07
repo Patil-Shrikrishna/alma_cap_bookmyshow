@@ -9,12 +9,12 @@ const postBooking = async (req, res) => {
     if (!booking) {
       // If no booking is found, respond with a 404 error and a message.
       return res
-        .status(404)
+        .status(422)
         .json({ message: "Failed to create booking. Please try again later." });
     }
 
-    // If the booking is successfully created, respond with a 201 status (Created) and the booking details in JSON format.
-    res.status(201).json(booking);
+    // If the booking is successful, respond with a 200 status (OK) and the booking details in JSON format.
+    res.status(200).json(booking);
   } catch (error) {
     // If an error occurs during the process, handle and log the error.
     console.error("Error creating booking:", error);
