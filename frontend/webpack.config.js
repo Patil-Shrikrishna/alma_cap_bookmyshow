@@ -1,15 +1,6 @@
 const path = require("path");
-const dotenv = require('dotenv');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { createProxyMiddleware } = require('http-proxy-middleware');
-// Load environment variables from .env file
-const env = dotenv.config().parsed;
-// Set up the environment variable for Webpack
-const envKeys = {
-    'process.env.REACT_APP_DATABASE_URL': JSON.stringify(env.REACT_APP_DATABASE_URL),
-  };
-
 
 module.exports = {
     entry: path.join(__dirname, "src", "index.js"),
@@ -48,7 +39,5 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "src", "index.html"),
         }),
-        // Add DefinePlugin to replace environment variables in the code
-        new webpack.DefinePlugin(envKeys),
     ],
 };

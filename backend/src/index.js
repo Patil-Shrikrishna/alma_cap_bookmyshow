@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const router = require("./routes/routes");
 const connectToMongo = require("./config/connector");
-const { createProxyMiddleware } = require("http-proxy-middleware");
+// const { createProxyMiddleware } = require("http-proxy-middleware");
 
 // Create an instance of the Express application.
 const app = express();
