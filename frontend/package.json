@@ -22,6 +22,7 @@
     "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "http-proxy-middleware": "^2.0.6",
     "image-webpack-loader": "^8.1.0",
     "node-sass": "^9.0.0",
     "path": "^0.12.7",
@@ -32,8 +33,9 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "http-proxy-middleware": "^2.0.6",
+    "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
