@@ -1,12 +1,12 @@
 require("../styles/App.css");
 require('../styles/bootstrap.min.css')
+const bookingApi = require("../api/bookingApi")
 const React = require("react");
 
 const { movies, slots, seats } = require('./data.js')
 
+
 const BookTicket = () => {
-
-
     const [booking, setBooking] = React.useState({
 
         movie: ''
@@ -21,6 +21,17 @@ const BookTicket = () => {
         }
 
     })
+
+    const fetchApi = async() =>{
+        await bookingApi({
+            type: "GET"
+        })
+    }
+    
+    React.useEffect(() => {
+     fetchApi()  
+    }, [])
+    
 
     const [isActive, setIsActive] = React.useState("")
 
@@ -68,7 +79,8 @@ const BookTicket = () => {
     ))
 
     const handleOnSubmit = () => {
-        console.log('booking', booking.seats.seat)
+        console.log('booking', booking)
+        console.log(process.env.REACT_APP_DATABASE_URL)
     }
 
 
