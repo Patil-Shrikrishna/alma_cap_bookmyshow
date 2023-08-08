@@ -1,11 +1,13 @@
+// Import required modules and components
 require("../styles/App.css");
 require("../styles/bootstrap.min.css");
-const postBookingApi = require("../api/postBookingApi");
-const React = require("react");
 
-const { movies, slots, seats } = require("../components/data.js");
-const LastBooking = require("../components/LastBooking.jsx");
+const React = require("react");
+const postBookingApi = require("../api/postBookingApi");
 const getLastBookingApi = require("../api/getLastBookingApi");
+
+const LastBooking = require("../components/LastBooking.jsx");
+const { movies, slots, seats } = require("../components/data.js");
 
 const BookTicket = () => {
   const [booking, setBooking] = React.useState({
@@ -33,8 +35,11 @@ const BookTicket = () => {
     },
   });
 
+  // State variable for current selection in the form
   const [isActive, setIsActive] = React.useState("");
 
+
+    // Generate a list of movie names as list items
   const movieNames = movies.map((movie) => (
     <li
       key={movie}
@@ -51,6 +56,8 @@ const BookTicket = () => {
     </li>
   ));
 
+
+    // Generate a list of available time slots as list items
   const movieSlots = slots.map((slot) => (
     <li
       key={slot}
@@ -62,6 +69,8 @@ const BookTicket = () => {
     </li>
   ));
 
+
+    // Generate a list of available seats with input fields for quantity
   const movieSeats = seats.map((seat, i) => (
     <li
       key={seat}
@@ -86,13 +95,21 @@ const BookTicket = () => {
     </li>
   ));
 
+
+    // Handle form submission
   const handleOnSubmit = async () => {
+
+    // Post booking data to the API
     postBookingApi(booking);
+
+    // Fetch last booking data from the API
     const res = await getLastBookingApi();
-    console.log(res);
+ 
+    // Update 'lastBooking' state with fetched data
     setLastBooking(res);
   };
 
+    // JSX structure of the 'BookTicket' component
   return (
     <section>
       <h1>Book that show!!</h1>
@@ -122,11 +139,13 @@ const BookTicket = () => {
             </button>
           </div>
         </div>
-        {/* booking data  */}
-
+      
+      {/* Display last booking data */}
         <LastBooking lastBooking={lastBooking} />
       </div>
     </section>
   );
 };
+
+// Export the 'BookTicket' component for use in other modules
 module.exports = BookTicket;

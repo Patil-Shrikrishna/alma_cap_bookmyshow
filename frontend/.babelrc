@@ -1,9 +1,18 @@
+// Babel configuration file
+
 {
-    "presets": [
-        "@babel/env",
-        "@babel/react"
-    ],
-    "plugins": [
-        "@babel/plugin-proposal-class-properties"
-    ]
+  // List of presets to be used by Babel during transpilation
+  "presets": [
+    // Transpile JavaScript to be compatible with the specified environment
+    "@babel/env",
+
+    // Transpile JSX syntax and React-specific features
+    "@babel/react"
+  ],
+
+  // List of plugins to be applied during the transpilation process
+  "plugins": [
+    // Enable support for class properties syntax proposal
+    "@babel/plugin-proposal-class-properties"
+  ]
 }
