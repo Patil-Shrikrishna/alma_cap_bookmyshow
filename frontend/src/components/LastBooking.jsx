@@ -1,12 +1,11 @@
-const React = require("react");
 
+// Define the 'LastBooking' functional component
 const LastBooking = ({ lastBooking }) => {
   return (
     <div className="ticket-container">
       <h2>Last Booking Details:</h2>
 
-      {/* seats  */}
-
+{/* Display the list of booked seats */}
       <div>
         <b>seats:</b>
         <ul>
@@ -19,12 +18,12 @@ const LastBooking = ({ lastBooking }) => {
         </ul>
       </div>
 
-      {/* slot  */}
+{/* Display the booked time slot */}
       <div>
         <b>slot:</b> <span>{lastBooking?.slot}</span>
       </div>
 
-      {/* movie  */}
+{/* Display the booked movie */}
       <div>
         <b>movie:</b> <span>{lastBooking?.movie}</span>
       </div>
