@@ -10,16 +10,13 @@ const postBookingApi = async (data) => {
       body: JSON.stringify(data), // Convert the data object to JSON and set it as the request body
     });
 
-    if (!response.ok) {
-      throw new Error(
-        `Error creating booking: ${response.status} ${response.message}`
-      );
-    }
+  
 
     // Successful POST request
-    return "Booking created successfully!";
+    return response.json()
   } catch (error) {
-    throw error;
+    console.error(error);
+    
   }
 };
 

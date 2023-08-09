@@ -9,16 +9,10 @@ const getLastBookingApi = async () => {
       },
     });
 
-    if (!res.ok) {
-      throw new Error(
-        `Error fetching last booking: ${res.status} ${res.statusText}`
-      );
-    }
-
-    // Return the parsed JSON response from the API
+// Return the parsed JSON response from the API
     return res.json();
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };
 
