@@ -12,7 +12,7 @@ const postBookingApi = async (data) => {
 
     if (!response.ok) {
       throw new Error(
-        `Error creating booking: ${response.status} ${response.statusText}`
+        `Error creating booking: ${response.status} ${response.message}`
       );
     }
 

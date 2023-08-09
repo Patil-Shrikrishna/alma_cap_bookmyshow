@@ -7,13 +7,20 @@ const postBookingApi = require("../api/postBookingApi");
 const getLastBookingApi = require("../api/getLastBookingApi");
 
 const LastBooking = require("../components/LastBooking.jsx");
+
 const { movies, slots, seats } = require("../components/data.js");
 
 const BookTicket = () => {
+
+  const localMovieName=localStorage.getItem("movie")
+  const localMovieSlot=localStorage.getItem("slot")
+  const localMovieSeats=JSON.parse(localStorage.getItem("seats"))
+  
+
   const [booking, setBooking] = React.useState({
-    movie: "",
-    slot: "",
-    seats: {
+    movie: localMovieName || "",
+    slot: localMovieSlot || "",
+    seats: localMovieSeats || {
       A1: 0,
       A2: 0,
       A3: 0,
@@ -74,13 +81,14 @@ const BookTicket = () => {
   const movieSeats = seats.map((seat, i) => (
     <li
       key={seat}
-      className={`seat-column ${isActive === seat && "seat-column-selected"}`}
+      className={`seat-column ${booking.seats[seat] && "seat-column-selected"}`}
       onClick={() => setIsActive(seat)}>
       <h5>Type {seat}</h5>
       <input
         type="number"
         min={0}
         name={seat}
+        value={booking.seats[seat]>0 && booking.seats[seat]}
         placeholder={0}
         onChange={(e) =>
           setBooking({
@@ -95,12 +103,20 @@ const BookTicket = () => {
     </li>
   ));
 
+  React.useEffect(()=>{
+    localStorage.setItem("movie",booking.movie)
+    localStorage.setItem("slot",booking.slot)
+    localStorage.setItem("seats",JSON.stringify(booking.seats))
+  },[booking])
+
+
 
     // Handle form submission
   const handleOnSubmit = async () => {
 
     // Post booking data to the API
     postBookingApi(booking);
+    localStorage.clear()
 
     // Fetch last booking data from the API
     const res = await getLastBookingApi();
@@ -141,7 +157,7 @@ const BookTicket = () => {
         </div>
       
       {/* Display last booking data */}
-        <LastBooking lastBooking={lastBooking} />
+        <LastBooking lastBooking={lastBooking}     />
       </div>
     </section>
   );
