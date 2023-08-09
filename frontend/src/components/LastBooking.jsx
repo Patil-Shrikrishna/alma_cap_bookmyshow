@@ -1,4 +1,5 @@
 const React=require('react')
+
 // Define the 'LastBooking' functional component
 const LastBooking = ({ lastBooking }) => {
   return (

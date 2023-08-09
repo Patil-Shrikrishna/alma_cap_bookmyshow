@@ -1,6 +1,6 @@
 # Gitignore file
 
-# Ignore the "node_modules" directory, which contains dependencies installed via npm or yarn
+# Ignore the "node_modules" directory, which contains dependencies installed via npm 
 node_modules/
 
 # Ignore the ".vscode" directory, which may contain Visual Studio Code settings
