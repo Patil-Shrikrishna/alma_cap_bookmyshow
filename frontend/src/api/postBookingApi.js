@@ -10,13 +10,10 @@ const postBookingApi = async (data) => {
       body: JSON.stringify(data), // Convert the data object to JSON and set it as the request body
     });
 
-  
-
-    // Successful POST request
-    return response.json()
+    // Return the parsed json data from the api
+    return response.json();
   } catch (error) {
     console.error(error);
-    
   }
 };
 

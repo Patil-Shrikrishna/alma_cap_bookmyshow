@@ -3,6 +3,7 @@ require("../styles/App.css");
 require("../styles/bootstrap.min.css");
 
 const React = require("react");
+
 const postBookingApi = require("../api/postBookingApi");
 const getLastBookingApi = require("../api/getLastBookingApi");
 
@@ -12,11 +13,12 @@ const { movies, slots, seats } = require("../components/data.js");
 
 const BookTicket = () => {
 
+  // Retrieve movie, slot, and seats data from local storage
   const localMovieName=localStorage.getItem("movie")
   const localMovieSlot=localStorage.getItem("slot")
   const localMovieSeats=JSON.parse(localStorage.getItem("seats"))
   
-
+  // Initialize 'booking' state with default values or local storage data
   const [booking, setBooking] = React.useState({
     movie: localMovieName || "",
     slot: localMovieSlot || "",
@@ -29,25 +31,10 @@ const BookTicket = () => {
       D2: 0,
     },
   });
+
+    // Initialize 'lastBooking' state
   const [lastBooking, setLastBooking] = React.useState(null)
-  //   {
-  //   movie: "",
-  //   slot: "",
-  //   seats: {
-  //     A1: 0,
-  //     A2: 0,
-  //     A3: 0,
-  //     A4: 0,
-  //     D1: 0,
-  //     D2: 0,
-  //   },
-  // });
-
-  // State variable for current selection in the form
-  // const [isActive, setIsActive] = React.useState("");
-
-
-
+ 
     // Generate a list of movie names as list items
   const movieNames = movies.map((movie) => (
     <li
@@ -84,7 +71,6 @@ const BookTicket = () => {
     <li
       key={seat}
       className={`seat-column ${booking.seats[seat] && "seat-column-selected"}`}
-      // onClick={() => setIsActive(seat)}
     >
       <h5>Type {seat}</h5>
       <input
@@ -106,12 +92,16 @@ const BookTicket = () => {
     </li>
   ));
 
+
+    // Update local storage with 'booking' data when 'booking' state changes
   React.useEffect(()=>{
     localStorage.setItem("movie",booking.movie)
     localStorage.setItem("slot",booking.slot)
     localStorage.setItem("seats",JSON.stringify(booking.seats))
   },[booking])
    
+
+    // Fetch and set the last booking data on component mount
    const getBookingData = async () => {
     const data = await getLastBookingApi()
     setLastBooking(data)
@@ -126,7 +116,11 @@ const BookTicket = () => {
 
     // Post booking data to the API
     await postBookingApi(booking).then((res) => setLastBooking(res));
+
+    // Clear the localStorage data after the form submission
     localStorage.clear()
+
+    // Reset 'booking' state to default values
     setBooking({
       movie: "",
       slot: "",
@@ -146,8 +140,8 @@ const BookTicket = () => {
     <section>
       <h1>Book that show!!</h1>
       <div className="booking-container">
-        {/* booking form  */}
 
+        {/* booking form  */}
         <div>
           <div className="movie-row">
             <h3>Select a Movie</h3>
