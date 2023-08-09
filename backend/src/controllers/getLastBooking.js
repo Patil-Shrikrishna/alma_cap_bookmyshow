@@ -10,7 +10,7 @@ const getLastBooking = async (req, res) =>{
             res.status(200).json(lastEntry)
         } else {
             // If not found send status code 404 and error message in response
-            res.status(404).json('No previous booking found.' )
+            res.status(404).json({message: 'No previous booking found.'} )
         }
       })
       .catch((err) => {

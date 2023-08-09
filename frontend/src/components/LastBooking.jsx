@@ -5,11 +5,12 @@ const LastBooking = ({ lastBooking }) => {
     <div className="ticket-container">
       <h2>Last Booking Details:</h2>
 
-{/* Display the list of booked seats */}
+{!lastBooking?.movie ? <p>No last Booking found</p> : 
+  <>{/* Display the list of booked seats */}
       <div>
         <b>seats:</b>
         <ul>
-          {Object.entries(lastBooking?.seats).map(([seat, count]) => (
+          { lastBooking?.seats!== undefined  && Object.entries(lastBooking?.seats).map(([seat, count]) => (
             <li key={seat}>
               <b>{seat}: </b>
               <span>{count}</span>
@@ -26,7 +27,7 @@ const LastBooking = ({ lastBooking }) => {
 {/* Display the booked movie */}
       <div>
         <b>movie:</b> <span>{lastBooking?.movie}</span>
-      </div>
+      </div></>}
     </div>
   );
 };

@@ -29,21 +29,23 @@ const BookTicket = () => {
       D2: 0,
     },
   });
-  const [lastBooking, setLastBooking] = React.useState({
-    movie: "",
-    slot: "",
-    seats: {
-      A1: 0,
-      A2: 0,
-      A3: 0,
-      A4: 0,
-      D1: 0,
-      D2: 0,
-    },
-  });
+  const [lastBooking, setLastBooking] = React.useState(null)
+  //   {
+  //   movie: "",
+  //   slot: "",
+  //   seats: {
+  //     A1: 0,
+  //     A2: 0,
+  //     A3: 0,
+  //     A4: 0,
+  //     D1: 0,
+  //     D2: 0,
+  //   },
+  // });
 
   // State variable for current selection in the form
-  const [isActive, setIsActive] = React.useState("");
+  // const [isActive, setIsActive] = React.useState("");
+
 
 
     // Generate a list of movie names as list items
@@ -82,13 +84,14 @@ const BookTicket = () => {
     <li
       key={seat}
       className={`seat-column ${booking.seats[seat] && "seat-column-selected"}`}
-      onClick={() => setIsActive(seat)}>
+      // onClick={() => setIsActive(seat)}
+    >
       <h5>Type {seat}</h5>
       <input
         type="number"
         min={0}
         name={seat}
-        value={booking.seats[seat]>0 && booking.seats[seat]}
+        value={booking.seats[seat]> 0 ? booking.seats[seat] : 0 }
         placeholder={0}
         onChange={(e) =>
           setBooking({
@@ -108,21 +111,34 @@ const BookTicket = () => {
     localStorage.setItem("slot",booking.slot)
     localStorage.setItem("seats",JSON.stringify(booking.seats))
   },[booking])
-
-
+   
+   const getBookingData = async () => {
+    const data = await getLastBookingApi()
+    setLastBooking(data)
+   }
+   
+   React.useEffect( ()=>{
+    getBookingData()
+   },[])
 
     // Handle form submission
   const handleOnSubmit = async () => {
 
     // Post booking data to the API
-    postBookingApi(booking);
+    await postBookingApi(booking).then((res) => setLastBooking(res));
     localStorage.clear()
-
-    // Fetch last booking data from the API
-    const res = await getLastBookingApi();
- 
-    // Update 'lastBooking' state with fetched data
-    setLastBooking(res);
+    setBooking({
+      movie: "",
+      slot: "",
+      seats: {
+        A1: 0,
+        A2: 0,
+        A3: 0,
+        A4: 0,
+        D1: 0,
+        D2: 0,
+      },
+    });
   };
 
     // JSX structure of the 'BookTicket' component
@@ -157,7 +173,7 @@ const BookTicket = () => {
         </div>
       
       {/* Display last booking data */}
-        <LastBooking lastBooking={lastBooking}     />
+        <LastBooking lastBooking={lastBooking} />
       </div>
     </section>
   );
