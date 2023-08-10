@@ -12,12 +12,11 @@ const LastBooking = require("../components/LastBooking.jsx");
 const { movies, slots, seats } = require("../components/data.js");
 
 const BookTicket = () => {
-
   // Retrieve movie, slot, and seats data from local storage
-  const localMovieName=localStorage.getItem("movie")
-  const localMovieSlot=localStorage.getItem("slot")
-  const localMovieSeats=JSON.parse(localStorage.getItem("seats"))
-  
+  const localMovieName = localStorage.getItem("movie");
+  const localMovieSlot = localStorage.getItem("slot");
+  const localMovieSeats = JSON.parse(localStorage.getItem("seats"));
+
   // Initialize 'booking' state with default values or local storage data
   const [booking, setBooking] = React.useState({
     movie: localMovieName || "",
@@ -32,15 +31,15 @@ const BookTicket = () => {
     },
   });
 
-    // Initialize 'lastBooking' state
-  const [lastBooking, setLastBooking] = React.useState(null)
- 
-    // Generate a list of movie names as list items
+  // Initialize 'lastBooking' state
+  const [lastBooking, setLastBooking] = React.useState(null);
+
+  // Generate a list of movie names as list items
   const movieNames = movies.map((movie) => (
     <li
       key={movie}
       className={`movie-column ${
-        booking.movie === movie && "movie-column-selected"
+        booking.movie === movie ? "movie-column-selected" : ""
       }`}
       onClick={() =>
         setBooking({
@@ -52,32 +51,31 @@ const BookTicket = () => {
     </li>
   ));
 
-
-    // Generate a list of available time slots as list items
+  // Generate a list of available time slots as list items
   const movieSlots = slots.map((slot) => (
     <li
       key={slot}
       className={`slot-column ${
-        booking.slot === slot && "slot-column-selected"
+        booking.slot === slot ? "slot-column-selected" : ""
       }`}
       onClick={() => setBooking({ ...booking, slot })}>
       <b>{slot}</b>
     </li>
   ));
 
-
-    // Generate a list of available seats with input fields for quantity
+  // Generate a list of available seats with input fields for quantity
   const movieSeats = seats.map((seat, i) => (
     <li
       key={seat}
-      className={`seat-column ${booking.seats[seat] && "seat-column-selected"}`}
-    >
+      className={`seat-column ${
+        booking.seats[seat] ? "seat-column-selected" : ""
+      }`}>
       <h5>Type {seat}</h5>
       <input
         type="number"
         min={0}
         name={seat}
-        value={booking.seats[seat]> 0 ? booking.seats[seat] : 0 }
+        value={booking.seats[seat] > 0 ? booking.seats[seat] : ""}
         placeholder={0}
         onChange={(e) =>
           setBooking({
@@ -92,33 +90,30 @@ const BookTicket = () => {
     </li>
   ));
 
+  // Update local storage with 'booking' data when 'booking' state changes
+  React.useEffect(() => {
+    localStorage.setItem("movie", booking.movie);
+    localStorage.setItem("slot", booking.slot);
+    localStorage.setItem("seats", JSON.stringify(booking.seats));
+  }, [booking]);
 
-    // Update local storage with 'booking' data when 'booking' state changes
-  React.useEffect(()=>{
-    localStorage.setItem("movie",booking.movie)
-    localStorage.setItem("slot",booking.slot)
-    localStorage.setItem("seats",JSON.stringify(booking.seats))
-  },[booking])
-   
+  // Fetch and set the last booking data on component mount
+  const getBookingData = async () => {
+    const data = await getLastBookingApi();
+    setLastBooking(data);
+  };
 
-    // Fetch and set the last booking data on component mount
-   const getBookingData = async () => {
-    const data = await getLastBookingApi()
-    setLastBooking(data)
-   }
-   
-   React.useEffect( ()=>{
-    getBookingData()
-   },[])
+  React.useEffect(() => {
+    getBookingData();
+  }, []);
 
-    // Handle form submission
+  // Handle form submission
   const handleOnSubmit = async () => {
-
     // Post booking data to the API
     await postBookingApi(booking).then((res) => setLastBooking(res));
 
     // Clear the localStorage data after the form submission
-    localStorage.clear()
+    localStorage.clear();
 
     // Reset 'booking' state to default values
     setBooking({
@@ -135,12 +130,11 @@ const BookTicket = () => {
     });
   };
 
-    // JSX structure of the 'BookTicket' component
+  // JSX structure of the 'BookTicket' component
   return (
     <section>
       <h1>Book that show!!</h1>
       <div className="booking-container">
-
         {/* booking form  */}
         <div>
           <div className="movie-row">
@@ -165,8 +159,8 @@ const BookTicket = () => {
             </button>
           </div>
         </div>
-      
-      {/* Display last booking data */}
+
+        {/* Display last booking data */}
         <LastBooking lastBooking={lastBooking} />
       </div>
     </section>
