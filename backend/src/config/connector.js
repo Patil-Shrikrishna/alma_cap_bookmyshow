@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+require("dotenv").config()
 
 // Function to establish a connection with MongoDB.
 const connectToMongo = async () => {
   try {
-    const mongoURI = "mongodb://127.0.0.1:27017/bookMovie";
+    const mongoURI = process.env.MONGO_URI;
 
     // Connect to MongoDB using Mongoose.
     await mongoose.connect(mongoURI, {
