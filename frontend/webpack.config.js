@@ -11,7 +11,7 @@ module.exports = {
 
   // Output configuration
   output: {
-    path: path.join(__dirname, "build"), // Output directory for bundled files
+    path: path.join(__dirname, "public"), // Output directory for bundled files
 
     filename: "index.bundle.js", // Name of the bundled JavaScript file
   },
@@ -31,7 +31,8 @@ module.exports = {
     proxy: {
       "/api": {
         // Proxy requests with '/api' to the target
-        target: "http://localhost:8080", // Target URL for proxying
+        // target: "http://localhost:8080", // Target URL for proxying
+        target: "https://alma-cap-bookmyshow-backend-6yxn.onrender.com", // Target URL for proxying on render.com deployment
 
         changeOrigin: true, // Change the origin of the request
       },
