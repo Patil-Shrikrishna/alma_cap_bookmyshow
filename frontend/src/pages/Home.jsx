@@ -1,14 +1,10 @@
 // Import required modules and components
 require("../styles/App.css");
 require("../styles/bootstrap.min.css");
-
 const React = require("react");
-
 const postBookingApi = require("../api/postBookingApi");
 const getLastBookingApi = require("../api/getLastBookingApi");
-
 const LastBooking = require("../components/LastBooking.jsx");
-
 const { movies, slots, seats } = require("../components/data.js");
 
 const BookTicket = () => {
@@ -63,7 +59,7 @@ const BookTicket = () => {
     </li>
   ));
 
-  // Generate a list of available seats with input fields for quantity
+  // Generate a list of available seats with input fields for number of seats
   const movieSeats = seats.map((seat, i) => (
     <li
       key={seat}
@@ -147,7 +143,7 @@ const BookTicket = () => {
           </div>
 
           <div className="seat-row">
-            <h3>Select a Time slot</h3>
+            <h3>Select Seats</h3>
             <ul>{movieSeats}</ul>
           </div>
 
@@ -155,7 +151,7 @@ const BookTicket = () => {
             <button
               onClick={handleOnSubmit}
               disabled={!booking.movie || !booking}>
-              Submit
+              Book Now
             </button>
           </div>
         </div>

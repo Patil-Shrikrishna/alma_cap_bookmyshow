@@ -31,8 +31,8 @@ module.exports = {
     proxy: {
       "/api": {
         // Proxy requests with '/api' to the target
-        // target: "http://localhost:8080", // Target URL for proxying
-        target: "https://alma-cap-bookmyshow-backend-6yxn.onrender.com", // Target URL for proxying on render.com deployment
+        target: "http://localhost:8080", // Target URL for proxying
+        // target: "https://alma-cap-bookmyshow-backend-6yxn.onrender.com", // Target URL for proxying on render.com deployment
 
         changeOrigin: true, // Change the origin of the request
       },
