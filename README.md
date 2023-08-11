@@ -18,7 +18,10 @@ Welcome to the BookMyShow project! This is a web application that allows users t
 
 Checkout demo here - [BookMyShow](https://alma-cap-bookmyshow.vercel.app/)
 
-![BookMyShow](screenshot Link goes here)
+![BookMyShow](./frontend/src/screenshot/Screenshot1.png)
+![BookMyShow](./frontend/src/screenshot/Screenshot2.png)
+![BookMyShow](./frontend/src/screenshot/Screenshot3.png)
+![BookMyShow](./frontend/src/screenshot/Screenshot4.png)
 
 ## Features
 
