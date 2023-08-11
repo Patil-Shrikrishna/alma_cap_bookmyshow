@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const router = require("./routes/routes");
 const connectToMongo = require("./config/connector");
+require("dotenv").config()
+
 // const { createProxyMiddleware } = require("http-proxy-middleware");
 
 // Create an instance of the Express application.
@@ -27,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api", router);
 
 // Define the port for the server to listen on.
-const port = 8080;
+const port = process.env.PORT;
 
 // Start the server and make it listen on the specified port.
 // A message will be printed to the console once the server is up and running.

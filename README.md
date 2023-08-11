@@ -16,11 +16,13 @@
 
 Welcome to the BookMyShow project! This is a web application that allows users to book movie tickets online. Users can browse available movies, select a movie, choose a showtime, and book their desired seats. The project uses both local storage and MongoDB for temporary and permanent data storage, respectively.
 
-Checkout demo here - [BookMyShow](https://bookmyshowLinkGoesHere)
+Checkout demo here - [BookMyShow](https://alma-cap-bookmyshow.vercel.app/)
+
+![BookMyShow](screenshot Link goes here)
 
 ## Features
 
-- Browse a list of available movies with details such as movie name, description, and showtimes.
+- Browse a list of available movies with details such as movie name and showtimes.
 - Select a movie and view available showtimes for that movie.
 - Reserve seats for a selected showtime.
 - Store temporary booking details using local storage to allow users to continue their booking process even if they close the browser or refresh the page.
@@ -89,7 +91,6 @@ The BookMyShow project uses the following technologies:
 
 - Node.js and Express.js for the server-side application.
 - MongoDB with Mongoose for permanent data storage.
-- Local Storage for temporary data storage in the web browser.
 - Webpack for bundling and managing frontend assets.
 - Babel for transpiling modern JavaScript code for better browser compatibility.
 - React for building the user interface.
@@ -111,7 +112,7 @@ This project follows the [all-contributors](https://github.com/Patil-Shrikrishna
 - Shrikrishna Patil
   | [GitHub](https://github.com/Patil-Shrikrishna)
   | [LinkedIn](https://www.linkedin.com/in/shrikrishna-patil-1b9101239/)
-  | [YouTube](https://www.youtube.com/channel/UCM2cCYy4__w5GY4HWJbcq8A)
+  | [YouTube](https://www.youtube.com/@krishnapatil03)
 
 - Sneta Gupta
   | [GitHub](https://github.com/snetagupta)
