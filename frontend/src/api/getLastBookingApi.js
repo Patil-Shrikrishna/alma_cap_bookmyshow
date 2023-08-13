@@ -2,7 +2,7 @@
 const getLastBookingApi = async () => {
   try {
     // Send a GET request to the "/api/booking" endpoint
-    const res = await fetch("https://alma-cap-bookmyshow-backend-6yxn.onrender.com/api/booking", {
+    const res = await fetch("/api/booking", {
       method: "GET",
       headers: {
         "Content-Type": "application/json", // Set the content type for the request
